@@ -4,7 +4,10 @@
 ref: https://docs.docker.com/engine/install/ubuntu/
 
 # Docker Commands
+
 ######### WORK WITH CONTAINERS #############
+
+
 docker run <docker-image>   # Run docker container
 docker run -d <docker-image>    # run docker container in dettached way
 docker ps   # to list running containers
@@ -27,6 +30,8 @@ docker container stats      # to see container resources utlization
 docker rm -f `docker ps -aq`   # to remove all containers
 
 ########### WORKING WITH CONTAINER IMAGES ###########
+
+
 docker images   # to list docker images
 docker image list   # to list docker images
 docker pull <IMAGE-NAME>    # to pull docker image
@@ -40,27 +45,35 @@ docker save -o <file-name>.<tar/zip> <image-id>     # archive image
 docker load -i <file-name>              # extract image from archive
 
 # Docker Network Drivers
+
 ref: https://docs.docker.com/network/drivers/
+
 docker network list     # to list the network
 docker network create --drive=<driver> --subnet=<subnet-cidr> <network-name>    # to create docker network
 docker run --network=<network-name> <image-name>    # to run container in specific network
 docker network rm <network-name>    # to remove the network
 
 # Docker Volume
+
 docker volume list      # to list volumes
 docker volume create <vol-name>     # to create volume
 docker run -v <vol-name>:<mount-path> <image>   # to run container with volume
 
 # Deploy three tier Application using Docker
+
 step1: Deploy DB container
 docker volume create studentapp-vol
 docker run -d -v studentapp-vol:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=redhat mysql
 docker exec -it mysql bash [mysql create database studentapp;] [create_schema]
+
+
 step2: Deploy backend container
 configure context.xml
 update dockerfile
 build backend image
 docker run -d -p 8080:8080 backend:latest
+
+
 step3: Deploy frontend container
 configure index.html (update backend url)
 build frontend image
