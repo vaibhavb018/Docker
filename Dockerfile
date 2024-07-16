@@ -11,5 +11,11 @@ USER chaitanya
 
 ENV app_host='0.0.0.0'
 
-ENV app_port=5000 \
-    ABC=XYZ
+ENV app_port=5000
+
+EXPOSE 5000
+
+LABEL Version="v2"
+
+# Command to run the application
+CMD ["npm", "start"]
