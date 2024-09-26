@@ -1,0 +1,21 @@
+#INSTRUCTIONS FOR ARGUMENTS
+FROM alpine:3.18
+
+RUN apk add curl
+
+WORKDIR /downloads
+
+RUN adduser -D VB
+
+USER VB
+
+ENV app_host="0.0.0.0"
+
+ENV app_port="5000"
+
+EXPOSE 5000
+
+LABEL Version="v1"
+
+# command to run the application
+CMD [ "npm","start" ]
